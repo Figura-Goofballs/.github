@@ -1,0 +1,16 @@
+name: One repo to rule them all
+
+on:
+  push:
+    branches: [ main ]
+jobs:
+  replicate_changes:
+    runs-on: push
+    steps:
+    - name: Manage Files in Multiple Repositories
+      uses: derberg/manage-files-in-multiple-repositories@v2
+      with:
+        github_token: ${{ secrets.GH_TOKEN_GLOBAL }};
+        patterns_to_ignore: ./.github/workflows/global-files.yml";
+        patterns_to_include: ./.github/workflows;
+        
